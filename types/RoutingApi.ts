@@ -17,3 +17,29 @@ export type BikeRentalStation = {
     lon: number
     lat: number
 }
+
+export type NearestResponse = {
+    data: {
+        nearest: {
+            edges: Node[]
+        }  
+    }
+}
+
+
+export type Node = {
+    node: {
+        place: NearestRentalStation
+        distance: number
+    } 
+}
+
+
+export type NearestRentalStation = {  
+    stationId: string
+    name: string
+    bikesAvailable: number
+    spacesAvailable: number
+    capacity: number
+    state: string
+}

@@ -3,25 +3,23 @@ import MapView, { Callout, Marker } from 'react-native-maps';
 import { StyleSheet, View, Text, Keyboard, TextInput, Button, TouchableWithoutFeedback, Image } from 'react-native';
 import { BikeRentalStation } from '../types/RoutingApi';
 import { FetchBikes } from '../utils/FetchBikes';
-
-
+import { push, ref, set } from 'firebase/database';
 
 
 const MapComponent: React.FC = () => {
 
     
     const [location, setLocation] = React.useState({
-        lat: 60.200692,
-        lng: 24.934302,
+        lat: 60.182046,
+        lng: 24.975506,
       })
 
-    const favourites: string[] = []
     const [stations, setStations] = React.useState<BikeRentalStation[]>([])
 
-    React.useState(() => {
+    React.useEffect(() => {
         async function FetchData() {
-        const results = await FetchBikes()
-        setStations(results.data.bikeRentalStations)
+          const results = await FetchBikes()
+          setStations(results.data.bikeRentalStations)
         }
         FetchData()
     }, )
@@ -35,10 +33,6 @@ const MapComponent: React.FC = () => {
         }
     }
 
-    const addToFavourite = (stationId: string) => {
-      favourites.push(stationId)
-      console.log(favourites)
-    }
 
     return (
         <View style={styles.container}>
@@ -62,7 +56,6 @@ const MapComponent: React.FC = () => {
                         <View style={{ alignItems: 'center' }}>
                           <Text numberOfLines={1} style={{fontSize: 15, }}>Bikes available: {m.bikesAvailable}</Text>
                           <Text numberOfLines={1} style={{fontSize: 15, }}>Total spaces: {m.capacity}</Text>
-                          <Button title='Favourite' onPress={() => addToFavourite(m.stationId)} />
                         </View>
                       </View>
                     </Callout>
