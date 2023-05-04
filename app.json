@@ -1,5 +1,13 @@
 {
   "expo": {
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow app to use your location?"
+        }
+      ]
+    ],
     "name": "CityBike-App",
     "slug": "CityBike-App",
     "version": "1.0.0",
@@ -16,6 +24,7 @@
     ],
     "ios": {
       "supportsTablet": true
+      
     },
     "android": {
       "adaptiveIcon": {
@@ -25,6 +34,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    } 
+      
     }
   }
-}
+

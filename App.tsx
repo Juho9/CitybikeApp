@@ -1,26 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { Text } from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-
 import HomeScreen from './screens/HomeScreen';
 import BikesScreen from './screens/BikesScreen';
 import StationsScreen from './screens/StationsScreen';
 
 
-type RootTabParamList = {
-  Home: undefined;
-  Detail: { itemId: number };
-};
-
 const Tab = createMaterialBottomTabNavigator();
 
-const App = () => {
 
+
+const App = () => {
   
   return (
     <NavigationContainer>

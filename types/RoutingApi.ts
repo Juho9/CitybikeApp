@@ -43,3 +43,18 @@ export type NearestRentalStation = {
     capacity: number
     state: string
 }
+
+//Type for 'expo-locations' response body
+export type LocationResponse = {
+    coords: {
+        accuracy: number | null
+        altitude: number | null
+        altitudeAccuracy: number | null
+        heading: number | null
+        latitude: number
+        longitude: number
+        speed: number | null
+    }
+    mocked?: boolean
+    timestamp: number
+}

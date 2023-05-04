@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   map: {
-    flex: 6,
+    flex: 5,
     height: '100%',
     width: '100%',
     borderWidth: 1,

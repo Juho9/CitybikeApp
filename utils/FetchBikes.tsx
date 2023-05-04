@@ -1,17 +1,19 @@
 
 
+import { API_KEY } from "@env";
 import { RoutingResponse, BikeRentalStation, NearestResponse } from "../types/RoutingApi"
 
 
 
 
-let apiKey = process.env['API_KEY']
+
+
 
 const FetchBikes = async (): Promise<RoutingResponse> =>{
 
     let response = await fetch('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/graphql', 'digitransit-subscription-key': apiKey! },
+        headers: { 'Content-Type': 'application/graphql', 'digitransit-subscription-key': API_KEY },
         body: `{
             bikeRentalStations {
                 name
@@ -31,11 +33,13 @@ const FetchBikes = async (): Promise<RoutingResponse> =>{
     return data;
 }
 
+
+//Not in use
 const FetchFavourites = async (stationId: string): Promise<BikeRentalStation> =>{
 
     let response = await fetch('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/graphql', 'digitransit-subscription-key': apiKey! },
+        headers: { 'Content-Type': 'application/graphql', 'digitransit-subscription-key': API_KEY },
         body: `{
             bikeRentalStations(id:${stationId}) {
                 name
@@ -55,6 +59,8 @@ const FetchFavourites = async (stationId: string): Promise<BikeRentalStation> =>
     return data.data.bikeRentalStations[0];
 }
 
+
+//Not in use
 const getBikeStationsDataToList = async (stationIds: string[]): Promise<BikeRentalStation[]> => {
     const dataList: BikeRentalStation[] = []
     if (stationIds.length > 0) {
@@ -71,7 +77,7 @@ const getBikeStationsDataToList = async (stationIds: string[]): Promise<BikeRent
 
     let response = await fetch('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/graphql', 'digitransit-subscription-key': apiKey! },
+        headers: { 'Content-Type': 'application/graphql', 'digitransit-subscription-key': API_KEY },
         body: `{
             nearest(lat: ${lat}, lon: ${lon}, maxResults: 3, maxDistance: 1500, filterByPlaceTypes: [BICYCLE_RENT]) {
                 edges {

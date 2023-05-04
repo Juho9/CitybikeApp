@@ -1,5 +1,3 @@
-import dotenv from 'dotenv';
+import API_KEY from '@env'
 
-dotenv.config();
-
-export const API_KEY = process.env.API_KEY;
+export default {API_KEY};

@@ -1,10 +1,12 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useRef } from 'react';
+import { View, Text, StyleSheet, FlatList, Animated } from 'react-native';
+import { BikeRentalStation } from '../types/RoutingApi';
+import { FetchBikes } from '../utils/FetchBikes';
+import LottieView from 'lottie-react-native';
+import InfoComponent from '../components/InfoComponent';
+
 
 const StationsScreen = () => {
-  const handlePress = () => {
-    // Navigation logic for going to the next screen
-  };
 
   return (
     <View style={styles.container}>
@@ -12,7 +14,7 @@ const StationsScreen = () => {
         <Text style={styles.title}>Stations</Text>
       </View>
       <View style={styles.rest}>
-
+        <InfoComponent />
       </View>
     </View>
   );
@@ -37,20 +39,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   rest: {
-    flex: 6,
+    flex: 5,
     borderWidth: 1,
+    width: '100%',
     
-  },
-  button: {
-    backgroundColor: '#007aff',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
   },
 });
 
