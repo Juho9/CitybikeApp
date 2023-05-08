@@ -23,19 +23,28 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
-      
+      "supportsTablet": true,
+      "bundleIdentifier": "com.juho9.CityBikeApp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.FOREGROUND_SERVICE"
+      ],
+      "package": "com.juho9.CityBikeApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    } 
-      
+    },
+    "extra": {
+      "eas": {
+        "projectId": "59094a27-4b40-4a42-9d2c-c242f7c1cf5b"
+      }
     }
   }
-
+}
