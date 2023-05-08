@@ -3,11 +3,10 @@ import MapView, { Callout, Marker } from 'react-native-maps';
 import { StyleSheet, View, Text, Animated } from 'react-native';
 import { BikeRentalStation } from '../types/RoutingApi';
 import { FetchBikes } from '../utils/FetchBikes';
-import LottieView from 'lottie-react-native';
 import useLocation from '../utils/UseLocation';
 import { ActivityIndicator } from 'react-native-paper';
 
-
+/* Return Mapview component that renders all fetched stations to markers */
 const MapComponent: React.FC = () => {
 
     
@@ -30,7 +29,7 @@ const MapComponent: React.FC = () => {
         FetchData()
     }, [])
 
-    //Animations
+    //Animations (not in use anymore)
     const progress = useRef(new Animated.Value(0)).current
     
     const handleLikeAnimation = () => {
@@ -49,7 +48,7 @@ const MapComponent: React.FC = () => {
       )
     }
  
-    //Returns image based on the number of available bikes in station.
+    //Returns image based on the number of available bikes in station
     const getImageForMarker = (value: number) => {
         if (value === 0) {
             return require('../assets/motorcycle-icon-red.png');
@@ -60,7 +59,7 @@ const MapComponent: React.FC = () => {
         }
     }
 
-
+    //Returns mapview component and stations as markers
     return (
         <View style={styles.container}>
           <MapView style={styles.map} 

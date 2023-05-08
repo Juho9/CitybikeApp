@@ -4,7 +4,7 @@ import { BikeRentalStation } from '../types/RoutingApi';
 import { FetchBikes } from '../utils/FetchBikes';
 
 
-
+/* Some nice info about citybikestations in Pääkaupunkiseutu */
 const InfoComponent = () => {
 
     const [stations, setStations] = React.useState<BikeRentalStation[]>([])
@@ -15,7 +15,7 @@ const InfoComponent = () => {
     var totalStationsOnline: number = 0
 
 
-    //Hook for fetching needed data
+    //Hook for fetching all stations and setting stations to state
     React.useEffect(() => {
         async function FetchData() {
           const results = await FetchBikes()

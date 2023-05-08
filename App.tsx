@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -15,7 +14,9 @@ const Tab = createMaterialBottomTabNavigator();
 
 
 const App = () => {
-  
+
+
+  //Navigation for app
   return (
     <NavigationContainer>
       <Tab.Navigator

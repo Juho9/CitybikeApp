@@ -1,5 +1,5 @@
 
-//Type for response from Digitransit Routing API
+//Type for response from Digitransit Routing API where we fetch all stations
 export type RoutingResponse = {
     data: {
         bikeRentalStations: BikeRentalStation[]
@@ -18,6 +18,7 @@ export type BikeRentalStation = {
     lat: number
 }
 
+//Type for response from Digitransit where we fetch nearest stations based of our coordinates
 export type NearestResponse = {
     data: {
         nearest: {
@@ -26,7 +27,6 @@ export type NearestResponse = {
     }
 }
 
-
 export type Node = {
     node: {
         place: NearestRentalStation
@@ -34,7 +34,7 @@ export type Node = {
     } 
 }
 
-
+//Type for bikestation
 export type NearestRentalStation = {  
     stationId: string
     name: string

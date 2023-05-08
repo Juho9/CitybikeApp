@@ -1,14 +1,11 @@
 
 
-import { API_KEY } from "@env";
+
 import { RoutingResponse, BikeRentalStation, NearestResponse } from "../types/RoutingApi"
+import { API_KEY } from '@env';
 
 
-
-
-
-
-
+//Fetch all bikestations
 const FetchBikes = async (): Promise<RoutingResponse> =>{
 
     let response = await fetch('https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql', {

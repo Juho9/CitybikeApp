@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import NearestComponent from '../components/NearestComponent';
 
 
@@ -11,7 +11,6 @@ const HomeScreen = () => {
       <View style={styles.titleView}>
         <Text style={styles.title}>Home</Text>
       </View>
-        
       <View style={styles.rest}>
         <NearestComponent />
       </View>

@@ -13,6 +13,7 @@ const NearestComponent= () => {
   const [loading, setLoading] = React.useState(true)
     
 
+  //Gets devices location and fetches closest 3 stations based on the coordinates
   React.useEffect(() => {
     async function FetchStations(){
     const location = await useLocation()

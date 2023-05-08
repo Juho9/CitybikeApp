@@ -1,8 +1,5 @@
-import React, { useRef } from 'react';
-import { View, Text, StyleSheet, FlatList, Animated } from 'react-native';
-import { BikeRentalStation } from '../types/RoutingApi';
-import { FetchBikes } from '../utils/FetchBikes';
-import LottieView from 'lottie-react-native';
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 import InfoComponent from '../components/InfoComponent';
 
 
