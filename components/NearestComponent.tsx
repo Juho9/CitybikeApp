@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, RefreshControl } from 'react-native';
 import { Node } from '../types/RoutingApi';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { fetchNearestStations } from '../utils/FetchBikes';
@@ -11,16 +11,17 @@ const NearestComponent= () => {
   
   const [nearestStations, setNearestStations] = React.useState<Node[]>([])
   const [loading, setLoading] = React.useState(true)
+  const [refreshing, setRefreshing] = React.useState(false)
     
 
   //Gets devices location and fetches closest 3 stations based on the coordinates
   React.useEffect(() => {
     async function FetchStations(){
-    const location = await useLocation()
-    const results = await fetchNearestStations(location!.coords.latitude, location!.coords.longitude)
-    setNearestStations(results.data.nearest.edges)
-    setLoading(false)
-  }
+      const location = await useLocation()
+      const results = await fetchNearestStations(location!.coords.latitude, location!.coords.longitude)
+      setNearestStations(results.data.nearest.edges)
+      setLoading(false)
+    }
   
   FetchStations()
   }, [])
@@ -52,11 +53,36 @@ const NearestComponent= () => {
     </View>
   )
 
+  //Data refresh for flatlist
+  const onRefresh = () => {
+    
+    setRefreshing(true)
+
+    setTimeout(() => {
+      async function NewData() {
+        const location = await useLocation()
+        const results = await fetchNearestStations(location!.coords.latitude, location!.coords.longitude)
+        setNearestStations(results.data.nearest.edges)
+        setRefreshing(false)
+      }
+
+      NewData()
+
+    }, 1500)
+  }
+
   return (
     <View style={styles.container}>  
       <View style={styles.renderItemView}>
         <Text numberOfLines={1} adjustsFontSizeToFit={true} style={{fontSize: 28, width: '80%', alignSelf: 'center', paddingTop: 30, paddingBottom: 30 }}>BikeStations closest to you...</Text>
-        <FlatList data={nearestStations} renderItem={renderItem} keyExtractor={(item) => item.node.place.stationId} ></FlatList>
+        <FlatList data={nearestStations} renderItem={renderItem} keyExtractor={(item) => item.node.place.stationId} 
+                  refreshControl={
+                    <RefreshControl 
+                        refreshing={refreshing}
+                        onRefresh={onRefresh}
+                    />
+                  }
+        ></FlatList>
       </View>
     </View>
   );
