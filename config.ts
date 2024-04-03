@@ -1,3 +1,3 @@
-import API_KEY from '@env'
+import API_KEY from '@env';
 
-export default {API_KEY};
+export default { API_KEY };

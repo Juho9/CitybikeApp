@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import MapComponent from '../components/MapComponent';
 
 const BikesScreen: React.FC = () => {
-
   return (
     <View style={styles.container}>
       <View style={styles.titleView}>
@@ -43,4 +42,3 @@ const styles = StyleSheet.create({
 });
 
 export default BikesScreen;
-

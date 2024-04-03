@@ -6,82 +6,114 @@ import { fetchNearestStations } from '../utils/FetchBikes';
 import { ActivityIndicator } from 'react-native-paper';
 import useLocation from '../utils/UseLocation';
 
-
-const NearestComponent= () => {
-  
-  const [nearestStations, setNearestStations] = React.useState<Node[]>([])
-  const [loading, setLoading] = React.useState(true)
-  const [refreshing, setRefreshing] = React.useState(false)
-    
+const NearestComponent = () => {
+  const [nearestStations, setNearestStations] = React.useState<Node[]>([]);
+  const [loading, setLoading] = React.useState(true);
+  const [refreshing, setRefreshing] = React.useState(false);
 
   //Gets devices location and fetches closest 3 stations based on the coordinates
   React.useEffect(() => {
-    async function FetchStations(){
-      const location = await useLocation()
-      const results = await fetchNearestStations(location!.coords.latitude, location!.coords.longitude)
-      setNearestStations(results.data.nearest.edges)
-      setLoading(false)
+    async function FetchStations() {
+      const location = await useLocation();
+      const results = await fetchNearestStations(
+        location!.coords.latitude,
+        location!.coords.longitude
+      );
+      setNearestStations(results.data.nearest.edges);
+      setLoading(false);
     }
-  
-  FetchStations()
-  }, [])
-  
 
+    FetchStations();
+  }, []);
 
   if (loading) {
-    return(
+    return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <ActivityIndicator animating={true} />
       </View>
-    )
+    );
   }
 
   const renderItem = ({ item }: { item: Node }) => (
     <View style={styles.renderItem}>
-      
-        <View style={{ flex: 3, alignSelf: 'center', marginLeft: 28, }}>
-          <Ionicons name="bicycle" size={45} />
-        </View>
-        <View style={{flex: 8, padding: 20, marginLeft: 10}}>
-          <Text numberOfLines={1} adjustsFontSizeToFit={true} style={{fontSize: 28, width: '100%'}}>{item.node.place.name}</Text>
-          <Text numberOfLines={1} adjustsFontSizeToFit={true} style={{fontSize: 18}}>Available bikes: {item.node.place.bikesAvailable}</Text>
-          <Text numberOfLines={1} adjustsFontSizeToFit={true} style={{fontSize: 18}}>Available spaces: {item.node.place.spacesAvailable}</Text>
-          <Text numberOfLines={1} adjustsFontSizeToFit={true} style={{fontSize: 18}}>{item.node.distance} metres</Text>
-        </View>
-        
-
+      <View style={{ flex: 3, alignSelf: 'center', marginLeft: 28 }}>
+        <Ionicons name="bicycle" size={45} />
+      </View>
+      <View style={{ flex: 8, padding: 20, marginLeft: 10 }}>
+        <Text
+          numberOfLines={1}
+          adjustsFontSizeToFit={true}
+          style={{ fontSize: 28, width: '100%' }}
+        >
+          {item.node.place.name}
+        </Text>
+        <Text
+          numberOfLines={1}
+          adjustsFontSizeToFit={true}
+          style={{ fontSize: 18 }}
+        >
+          Available bikes: {item.node.place.bikesAvailable}
+        </Text>
+        <Text
+          numberOfLines={1}
+          adjustsFontSizeToFit={true}
+          style={{ fontSize: 18 }}
+        >
+          Available spaces: {item.node.place.spacesAvailable}
+        </Text>
+        <Text
+          numberOfLines={1}
+          adjustsFontSizeToFit={true}
+          style={{ fontSize: 18 }}
+        >
+          {item.node.distance} metres
+        </Text>
+      </View>
     </View>
-  )
+  );
 
   //Data refresh for flatlist
   const onRefresh = () => {
-    
-    setRefreshing(true)
+    setRefreshing(true);
 
     setTimeout(() => {
       async function NewData() {
-        const location = await useLocation()
-        const results = await fetchNearestStations(location!.coords.latitude, location!.coords.longitude)
-        setNearestStations(results.data.nearest.edges)
-        setRefreshing(false)
+        const location = await useLocation();
+        const results = await fetchNearestStations(
+          location!.coords.latitude,
+          location!.coords.longitude
+        );
+        setNearestStations(results.data.nearest.edges);
+        setRefreshing(false);
       }
 
-      NewData()
-
-    }, 1500)
-  }
+      NewData();
+    }, 1500);
+  };
 
   return (
-    <View style={styles.container}>  
+    <View style={styles.container}>
       <View style={styles.renderItemView}>
-        <Text numberOfLines={1} adjustsFontSizeToFit={true} style={{fontSize: 28, width: '80%', alignSelf: 'center', paddingTop: 30, paddingBottom: 30 }}>BikeStations closest to you...</Text>
-        <FlatList data={nearestStations} renderItem={renderItem} keyExtractor={(item) => item.node.place.stationId} 
-                  refreshControl={
-                    <RefreshControl 
-                        refreshing={refreshing}
-                        onRefresh={onRefresh}
-                    />
-                  }
+        <Text
+          numberOfLines={1}
+          adjustsFontSizeToFit={true}
+          style={{
+            fontSize: 28,
+            width: '80%',
+            alignSelf: 'center',
+            paddingTop: 30,
+            paddingBottom: 30,
+          }}
+        >
+          Nearest to you...
+        </Text>
+        <FlatList
+          data={nearestStations}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.node.place.stationId}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
         ></FlatList>
       </View>
     </View>

@@ -2,10 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import NearestComponent from '../components/NearestComponent';
 
-
-
 const HomeScreen = () => {
-  
   return (
     <View style={styles.container}>
       <View style={styles.titleView}>
@@ -66,4 +63,3 @@ const styles = StyleSheet.create({
 });
 
 export default HomeScreen;
-

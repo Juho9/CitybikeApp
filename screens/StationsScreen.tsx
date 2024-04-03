@@ -2,9 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import InfoComponent from '../components/InfoComponent';
 
-
 const StationsScreen = () => {
-
   return (
     <View style={styles.container}>
       <View style={styles.titleView}>
@@ -39,9 +37,7 @@ const styles = StyleSheet.create({
     flex: 5,
     borderWidth: 1,
     width: '100%',
-    
   },
 });
 
 export default StationsScreen;
-
