@@ -3,7 +3,7 @@ import MapView, { Callout, Marker } from 'react-native-maps';
 import { StyleSheet, View, Text, Animated } from 'react-native';
 import { BikeRentalStation } from '../types/RoutingApi';
 import { FetchBikes } from '../utils/FetchBikes';
-import useLocation from '../utils/UseLocation';
+import UseLocation from '../utils/UseLocation';
 import { ActivityIndicator } from 'react-native-paper';
 
 /* Return Mapview component that renders all fetched stations to markers */
@@ -18,7 +18,7 @@ const MapComponent: React.FC = () => {
 
   React.useEffect(() => {
     async function FetchData() {
-      const location = await useLocation();
+      const location = await UseLocation();
       setLocation({
         lat: location!.coords.latitude,
         lng: location!.coords.longitude,

@@ -4,7 +4,7 @@ import { Node } from '../types/RoutingApi';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { fetchNearestStations } from '../utils/FetchBikes';
 import { ActivityIndicator } from 'react-native-paper';
-import useLocation from '../utils/UseLocation';
+import UseLocation from '../utils/UseLocation';
 
 const NearestComponent = () => {
   const [nearestStations, setNearestStations] = React.useState<Node[]>([]);
@@ -14,7 +14,7 @@ const NearestComponent = () => {
   //Gets devices location and fetches closest 3 stations based on the coordinates
   React.useEffect(() => {
     async function FetchStations() {
-      const location = await useLocation();
+      const location = await UseLocation();
       const results = await fetchNearestStations(
         location!.coords.latitude,
         location!.coords.longitude
@@ -78,7 +78,7 @@ const NearestComponent = () => {
 
     setTimeout(() => {
       async function NewData() {
-        const location = await useLocation();
+        const location = await UseLocation();
         const results = await fetchNearestStations(
           location!.coords.latitude,
           location!.coords.longitude
