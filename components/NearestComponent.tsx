@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, FlatList, RefreshControl } from 'react-native';
 import { Node } from '../types/RoutingApi';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { fetchNearestStations } from '../utils/FetchBikes';
+import { FetchNearestStations } from '../utils/FetchNearestStations';
 import { ActivityIndicator } from 'react-native-paper';
 import UseLocation from '../utils/UseLocation';
 
@@ -15,7 +15,7 @@ const NearestComponent = () => {
   React.useEffect(() => {
     async function FetchStations() {
       const location = await UseLocation();
-      const results = await fetchNearestStations(
+      const results = await FetchNearestStations(
         location!.coords.latitude,
         location!.coords.longitude
       );
@@ -79,7 +79,7 @@ const NearestComponent = () => {
     setTimeout(() => {
       async function NewData() {
         const location = await UseLocation();
-        const results = await fetchNearestStations(
+        const results = await FetchNearestStations(
           location!.coords.latitude,
           location!.coords.longitude
         );
