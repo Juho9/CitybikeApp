@@ -1,17 +1,34 @@
-# CityBike-App
+# Helsinki City Bike App
 ### Expo
-Link to Expo:
+Link to Expo (not up to date):
+
 https://expo.dev/accounts/juho9/projects/CityBike-App
 
-## Info about project
-React-Native TypeScript app published in Expo Go. Uses Routing API provided by Digitransit to get data about citybike stations in Pääkaupunkiseutu. 
+## Project overview
+This is a **React Native TypeScript app** created for a mobile development course. The app leverages the **Routing API** provided by Digitransit to display detailed information about city bike stations in the Helsinki metropolitan area.
+
+Users can view bike station data, including their location, current status, available bikes, and free spaces, in both map and list views. The app also integrates the user's current location to display nearby bike stations.
+
+---
 
 ## Used technologies
-### Routing Api
-Routing Api provides information about bikerentalstations using GraphQL. In app, Api return data about all available bikestations and their bikes and locations, aswell as data about closest stations to users device.
-### Locations
-Devices location data is collected using Expo Location-package.  It allows app to read geolocation information from the device.
-### React-Native-Maps
-Maps is used to show different bikestations in map-component. Used components from react-native-maps are MapView, Marker and Callout.
-### React Navigation
-React navigation and material-bottom-tabs is used for navigation from screen to one other. 
+### **Routing API**
+The app uses the **Digitransit Routing API** to fetch city bike station data via **GraphQL**. It provides:
+- Station names and locations.
+- Current status, including the number of available bikes and free spaces.
+
+### **Expo Location**
+The app utilizes the **Expo Location package** to access the user's geolocation data. This enables the app to:
+- Determine the user's current location.
+- Display the closest bike stations in both map and list views.
+
+### **React Native Maps**
+**React Native Maps** is used to create the map view for the app. Key components include:
+- `MapView`: Displays the map.
+- `Marker`: Pinpoints the locations of bike stations.
+- `Callout`: Provides detailed information about each station when a marker is tapped.
+
+### **React Navigation**
+The app uses **React Navigation** and **Material Bottom Tabs** for smooth screen transitions and navigation.
+
+---
