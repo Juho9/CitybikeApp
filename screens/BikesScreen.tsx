@@ -1,44 +1,19 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
+import ScreenStyles from './ScreenStyles';
 import MapComponent from '../components/MapComponent';
 
 const BikesScreen: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.titleView}>
-        <Text style={styles.title}>Check out bikes near you?</Text>
+    <View style={ScreenStyles.container}>
+      <View style={ScreenStyles.titleView}>
+        <Text style={ScreenStyles.title}>Check out bikes near you?</Text>
       </View>
-      <View style={styles.map}>
+      <View style={ScreenStyles.map}>
         <MapComponent />
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  },
-  map: {
-    flex: 5,
-    height: '100%',
-    width: '100%',
-    borderWidth: 1,
-  },
-  title: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    marginTop: '15%',
-    marginBottom: 3,
-  },
-  titleView: {
-    flex: 1,
-    backgroundColor: '#E6E6FA',
-    width: '100%',
-    alignItems: 'center',
-  },
-});
 
 export default BikesScreen;
