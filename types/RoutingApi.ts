@@ -5,7 +5,7 @@ export type RoutingResponse = {
   };
 };
 
-//Type for station in response
+//Type for station in response from Digitransit Routing Api
 export type BikeRentalStation = {
   name: string;
   stationId: string;
