@@ -6,7 +6,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import HomeScreen from './screens/HomeScreen';
 import BikesScreen from './screens/BikesScreen';
-import StationsScreen from './screens/StationsScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -20,19 +19,6 @@ const App = () => {
         barStyle={{ backgroundColor: '#E6E6FA' }}
       >
         <Tab.Screen
-          name="Bikes"
-          component={BikesScreen}
-          options={{
-            tabBarLabel: 'Bikes',
-            tabBarColor: '#E6E6FA',
-            tabBarIcon: ({ color }) => (
-              <Text style={{ color }}>
-                <Ionicons name="bicycle" size={26} color={color} />
-              </Text>
-            ),
-          }}
-        />
-        <Tab.Screen
           name="Home"
           component={HomeScreen}
           options={{
@@ -45,13 +31,14 @@ const App = () => {
           }}
         />
         <Tab.Screen
-          name="Stations"
-          component={StationsScreen}
+          name="Bikes"
+          component={BikesScreen}
           options={{
-            tabBarLabel: 'Stations',
+            tabBarLabel: 'Bikes',
+            tabBarColor: '#E6E6FA',
             tabBarIcon: ({ color }) => (
               <Text style={{ color }}>
-                <Ionicons name="stats-chart" size={24} color={color} />
+                <Ionicons name="bicycle" size={26} color={color} />
               </Text>
             ),
           }}
